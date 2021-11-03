@@ -1,5 +1,5 @@
 class Api::V1::TodoController < ApplicationController
-    before_action :set_todo, only: %i[update, destroy]
+    before_action :set_todo, only: %i[update destroy]
 
     def index
         todos = Todo.all
@@ -22,7 +22,8 @@ class Api::V1::TodoController < ApplicationController
         if @todo.save
             render json: {status:200, todo: @todo}
         else
-            render json: {status:500}
+            error = @todo.errors.details
+            render json: {status:500, error: error}
         end
     end
 

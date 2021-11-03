@@ -40,3 +40,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rubocop'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+end
